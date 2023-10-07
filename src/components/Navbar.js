@@ -10,9 +10,29 @@ export default class Navbar extends PureComponent {
     };
     const { totalQuantity } = this.props;
 
+    const navItems = [{
+      displayName: 'Home',
+      redirectTo: '/',
+    }, {
+      displayName: 'Products',
+      redirectTo: '/ourproducts',
+    }, {
+      displayName: 'About Us',
+      redirectTo: '/about',
+    }, {
+      displayName: 'Mission & Vision',
+      redirectTo: '/mission-vision',
+    }, {
+      displayName: 'Our Story',
+      redirectTo: '/team-member',
+    }, {
+      displayName: 'Contact Us',
+      redirectTo: '/contact-us',
+    }];
+
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3 pt-0">
           <div className="container-fluid" style={navbarStyle}>
             {/* Move the button to the left */}
             <button
@@ -34,7 +54,7 @@ export default class Navbar extends PureComponent {
             >
               
               <div className="offcanvas-header">
-                
+
                 <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
                   Our Services
                 </h5>
@@ -48,50 +68,24 @@ export default class Navbar extends PureComponent {
               <div className="offcanvas-body">
 
                 <ul className="navbar-nav justify-content-start flex-grow-1 ps-3">
-                   {/* Logo in the center */}
-            <a className="navbar-brand d-flex align-items-left" href="/">
-            <img src={logo} alt="Logo" style={{ height: '30px', width: '30px' }} />
+                  {/* Logo in the center */}
+                  <a className="navbar-brand d-flex align-items-left" href="/">
+                    <img src={logo} alt="Logo" style={{ height: '30px', width: '30px' }} />
 
-            </a>
-                  <li className="nav-item">
-                    <NavLink exact to="/" className="nav-link" activeClassName="active">
-                      Home
+                  </a>
+                  {navItems.map((item, index) => <li key={index} className="nav-item">
+                    <NavLink data-bs-dismiss="offcanvas" exact={index===0} to={item.redirectTo} className="nav-link" activeClassName="active">
+                      <span data-bs-dismiss="offcanvas">{item.displayName}</span>
                     </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/ourproducts" className="nav-link" activeClassName="active">
-                      Products
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/about" className="nav-link" activeClassName="active">
-                      About Us
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/mission-vision" className="nav-link" activeClassName="active">
-                      Mission & Vision
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/team-member" className="nav-link" activeClassName="active">
-                      Our Story
-                    </NavLink>
-                  </li>
-                
-                  <li className="nav-item">
-                    <NavLink to="/contact-us" className="nav-link" activeClassName="active">
-                      Contact Us
-                    </NavLink>
-                  </li>
+                  </li>)}
                 </ul>
               </div>
             </div>
-           
+
             {/* Display the number of items in the basket */}
             <div className="d-flex align-items-end">
               <Link to="/cart" className="nav-link">
-                <img src={cartIcon} alt="Cart" height="40"  />
+                <img src={cartIcon} alt="Cart" height="40" />
                 ({totalQuantity})
               </Link>
             </div>
