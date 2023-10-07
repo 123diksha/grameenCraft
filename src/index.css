@@ -1,0 +1,11 @@
+
+@media (max-width:768px){
+  body{
+    background-size: contain;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
