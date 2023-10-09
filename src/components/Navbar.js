@@ -9,10 +9,36 @@ export default class Navbar extends PureComponent {
   render() {
     const { totalQuantity } = this.props;
 
+    const navItems = [{
+      displayName: 'Home',
+      redirectTo: '/',
+    }, {
+      displayName: 'Products',
+      redirectTo: '/ourproducts',
+    }, {
+      displayName: 'About Us',
+      redirectTo: '/about',
+    }, {
+      displayName: 'Mission & Vision',
+      redirectTo: '/mission-vision',
+    }, {
+      displayName: 'Our Story',
+      redirectTo: '/team-member',
+    }, {
+      displayName: 'Contact Us',
+      redirectTo: '/contact-us',
+    }];
+
     return (
       <>
+<<<<<<< HEAD
         <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3">
           <div className="container-fluid">
+=======
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3 pt-0">
+          <div className="container-fluid" style={navbarStyle}>
+            {/* Move the button to the left */}
+>>>>>>> 1efbdd9b8fd1d518b819b14d6a64ed933e629920
             <button
               className="navbar-toggler"
               type="button"
@@ -30,6 +56,10 @@ export default class Navbar extends PureComponent {
               aria-labelledby="offcanvasNavbarLabel"
             >
               <div className="offcanvas-header">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1efbdd9b8fd1d518b819b14d6a64ed933e629920
                 <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
                   <b>Our Services</b>
                 </h5>
@@ -45,6 +75,7 @@ export default class Navbar extends PureComponent {
                   <img src={logo} alt="Logo" style={{ height: '30px', width: '100px' }} />
                 </a>
                 <ul className="navbar-nav justify-content-start flex-grow-1 ps-3">
+<<<<<<< HEAD
                   <li className="nav-item">
                     <NavLink to="/" className="nav-link">
                       <b>HOME</b>
@@ -75,6 +106,25 @@ export default class Navbar extends PureComponent {
             </div>
             <div className="d-flex align-items-end">
               <Link to="/cart" className="nav-link cart-link">
+=======
+                  {/* Logo in the center */}
+                  <a className="navbar-brand d-flex align-items-left" href="/">
+                    <img src={logo} alt="Logo" style={{ height: '30px', width: '30px' }} />
+
+                  </a>
+                  {navItems.map((item, index) => <li key={index} className="nav-item">
+                    <NavLink data-bs-dismiss="offcanvas" exact={index===0} to={item.redirectTo} className="nav-link" activeClassName="active">
+                      <span data-bs-dismiss="offcanvas">{item.displayName}</span>
+                    </NavLink>
+                  </li>)}
+                </ul>
+              </div>
+            </div>
+
+            {/* Display the number of items in the basket */}
+            <div className="d-flex align-items-end">
+              <Link to="/cart" className="nav-link">
+>>>>>>> 1efbdd9b8fd1d518b819b14d6a64ed933e629920
                 <img src={cartIcon} alt="Cart" height="40" />
                 ({totalQuantity})
               </Link>
