@@ -80,19 +80,19 @@ function App() {
   <div className="app-container text-center mt-5" >
     
       <Navbar totalQuantity={totalQuantity}  />
-      <div className="container mt-5">
-
-
-</div>
+      <Container className=" mt-5">
+</Container>
       <Routes>
         <Route
           path="/"
           element={
             <>
              <Container className="mt-5">
-              <Container className="mt-5"> <Row></Row></Container>
+              <Container className="mt-5"> <Row> <ImageSlider /></Row></Container>
             
-                <ImageSlider />
+              <Container className="mt-5">
+              {nextButton}
+               </Container>
                 </Container>
               <Container className="mt-5">
                 <h1><b>Hey! Bengaluru</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home </h3>
@@ -109,9 +109,7 @@ function App() {
          </div>
               </Container>
             
-              <Container className="mt-25">
-              {nextButton}
-               </Container>
+             
               
             </>
           }

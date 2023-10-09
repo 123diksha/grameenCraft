@@ -18,7 +18,7 @@ const Footer = () => {
         <div className = "Fcontact">
         <div className = "contactItem" >
         < h3 > Contact Info </h3>
-         <p> Bamanpuri village <br></br>Khargoan, Madhya Pradesh, India<br></br> Pin Code: 451115 
+         <p> village Bamanpuri <br></br>Khargoan, Madhya Pradesh, India<br></br> Pin Code: 451115 
          <br></br>Contact: +91-8959242024
          </p>
          </div>

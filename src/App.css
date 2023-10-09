@@ -44,7 +44,6 @@
 /* In your CSS file or as inline styles */
 
 body {
- 
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Optional: Keeps the background fixed while scrolling */

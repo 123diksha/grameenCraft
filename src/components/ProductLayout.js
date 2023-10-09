@@ -10,7 +10,7 @@ const ProductLayout = ({ products, addToCart, cart, totalQuantity }) => {
     <div>
       <Row></Row>
     </div>
-    <Container className="product-container">
+    <Container className="product-container mt-5">
       <Row className="justify-content-center align-items-center">
         {products.map((product) => (
           <Col key={product.name} xs={12} sm={6} md={4} lg={3} className="mb-4">
@@ -30,15 +30,13 @@ const ProductLayout = ({ products, addToCart, cart, totalQuantity }) => {
           </Col>
         ))}
       </Row>
-      <div className="text-center mt-4">
+      <container className="text-center m-4">
         <Button as={Link} to="/cart" variant="success">
           Go to Cart ({totalQuantity})
         </Button>
-      </div>
+      </container>
     </Container>
-    <div>
-      <Row></Row>
-    </div>
+     <div className=" mt-4"></div>
     </>
   );
 };

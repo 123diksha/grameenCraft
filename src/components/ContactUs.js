@@ -19,10 +19,10 @@ function ContactUs() {
     </p>
             <ul className="list-unstyled">
               <li>
-                <strong>Phone:</strong> +91 0000000
+                <strong>Phone:</strong> +91 8959242024
               </li>
               <li>
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> Mail.grameencraft@gmail.com
               </li>
               <li>
                 <strong>Address:</strong> <h10>Bamanpuri village , Barawaha </h10>
