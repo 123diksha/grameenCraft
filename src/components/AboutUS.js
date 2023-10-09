@@ -1,9 +1,18 @@
 import React from 'react';
-
+import { Container } from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 function AboutUS() {
+ 
   return (
-    <div className="container mt-4">
-      <h2>About Us</h2>
+    <>
+    <div>
+      <Row></Row>
+    </div>
+     <div className="mt-5 product-contain"> <Container  style={{ width: '300px', height: '100px',display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><h2>About Us</h2></Container></div>
+     <div>
+      <Row></Row>
+    </div>
+    <Container className="mt-3">
       <p>
         GrameenCraft is an initiative to serve you the best quality food products from different regions of rural India.
         Originating from a small village in Madhya Pradesh, our roots are well connected to rural India, enabling us
@@ -16,8 +25,9 @@ function AboutUS() {
         Sharbati and Lokwan. These are widely used for making different delicacies in various parts of the world and are known
         for their nutrients and taste. Finest-grade wheat is directly bought from the farmers.
       </p>
-      
-    </div>
+     
+  </Container>
+  </>
   );
 }
 

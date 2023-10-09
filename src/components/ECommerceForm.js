@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Row } from 'react-bootstrap';
 
-function ECommerceForm({ totalAmount }) {
+function ECommerceForm({ totalAmount ,name}) {
   const [formData, setFormData] = useState({
     username: '',
     phoneNumber: '',
@@ -46,6 +46,7 @@ function ECommerceForm({ totalAmount }) {
       Latitude: ${formData.latitude}
       Longitude: ${formData.longitude}
       Total Amount:  ₹${totalAmount}
+      name:${name}
     `;
 
     // Encode the message for the WhatsApp URL

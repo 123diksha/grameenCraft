@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
-function Product({ img, name, price,MRP,Weight, addToCart, cart, initialQuantity }) {
+function Product({ img, name, price, MRP, Weight, addToCart, cart, initialQuantity }) {
   const [quantityInCart, setQuantityInCart] = useState(initialQuantity);
 
   useEffect(() => {
@@ -30,51 +30,54 @@ function Product({ img, name, price,MRP,Weight, addToCart, cart, initialQuantity
   };
 
   return (
-    <Card className="custom-card" style={{ maxWidth: '215px', border: 'none'}}>
+    <Container mt-5 >
+    <Card className="custom-card" style={{ maxWidth: '215px', border: 'none' }}>
       <Card.Img src={img} alt={name} style={{ height: '215px', width: '215px' }} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>Weight: {Weight}</Card.Text>
         <Card.Text>MRP: ₹<s>{MRP}</s></Card.Text>
         <Card.Text>Price: ₹{price}</Card.Text>
-        <Row>
-  <Col xs={1} className="px-0">
-  <Button
-    variant="outline-success"
-    onClick={handleDecrement}
-    style={{
-      background: 'transparent',
-      color: 'black',
-      width: '100%',
-      padding: '0.25rem 0.5rem', // Adjust the padding to reduce the button size
-      fontSize: '0.75rem', // Adjust the font size to make the button smaller
-    }}
-  >
-    -
-  </Button>
-  </Col>
-  <Col xs={2} className="px-0 text-center">
-    <span>{quantityInCart}</span>
-  </Col>
-  <Col xs={1} className="px-0">
-  <Button
-    variant="outline-success"
-    onClick={handleIncrement}
-    style={{
-      background: 'transparent',
-      color: 'black',
-      width: '100%',
-      padding: '0.25rem 0.5rem', // Adjust the padding to reduce the button size
-      fontSize: '0.75rem', // Adjust the font size to make the button smaller
-    }}
-  >
-    +
-  </Button>
-  </Col>
-</Row>
-
+        <Container>
+          <Row>
+            <Col xs={4} className="text-center">
+              <Button
+                variant="outline-success"
+                onClick={handleDecrement}
+                style={{
+                  background: 'transparent',
+                  color: 'black',
+                  width: '100%',
+                  padding: '0.25rem 0.5rem',
+                  fontSize: '0.75rem',
+                }}
+              >
+                -
+              </Button>
+            </Col>
+            <Col xs={4} className="text-center">
+              <span>{quantityInCart}</span>
+            </Col>
+            <Col xs={4} className="text-center">
+              <Button
+                variant="outline-success"
+                onClick={handleIncrement}
+                style={{
+                  background: 'transparent',
+                  color: 'black',
+                  width: '100%',
+                  padding: '0.25rem 0.5rem',
+                  fontSize: '0.75rem',
+                }}
+              >
+                +
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </Card.Body>
     </Card>
+    </Container>
   );
 }
 

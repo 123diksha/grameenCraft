@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col,  Image } from 'react-bootstrap';
-import missionVisionImage from '../photo_with_chakki.jpg'; // Import your image file
 
 function TeamMember() {
   const circleStyle = {
@@ -21,7 +20,7 @@ function TeamMember() {
       <Row className="mt-5">
         <Col className="d-flex justify-content-center align-items-center">
           <div style={circleStyle}>
-            <Image src={missionVisionImage} alt="Mission Vision" style={imageStyle} />
+            <Image src='./public/pphoto_with_chakki.jpg' alt="Mission Vision" style={imageStyle} />
           </div>
         </Col>
       </Row>

@@ -1,0 +1,17 @@
+/* productLayout.css or any other CSS file */
+.product-container {
+    background-image: url('/public/flourbg.jpeg'); /* Replace with the path to your image */
+    background-size: cover; /* Adjust background size as needed */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center center; /* Position the image at the center */
+    width: 100vw;
+    
+  }
+  .product-contain {
+    background-image: url('/public/flourbg.jpeg'); /* Replace with the path to your image */
+    background-size: cover; /* Adjust background size as needed */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center center; /* Position the image at the center */
+    width: 100vw;
+    
+  }
