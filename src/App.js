@@ -3,15 +3,19 @@ import { Container, Button } from 'react-bootstrap';
 import { useLocation, Routes, Route, Link } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart';
 import Navbar from './components/Navbar';
+import AboutUS from './components/AboutUS';
 import ECommerceForm from './components/ECommerceForm';
 import MissionVision from './components/MissionVision';
-import AboutUS from './components/AboutUS';
 import TeamMember from './components/TeamMember'
 import ProductLayout from './components/ProductLayout';
 import ContactUs from './components/ContactUs';
-
+import Footer from './components/footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ImageSlider from './components/ImageSlider';
+import { Row } from 'react-bootstrap';
 
 function App() {
+ 
   const location = useLocation();
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
@@ -21,7 +25,7 @@ function App() {
   const products = [
     {
       name: 'Lokwan Wheat Flour',
-      img: '/Aata.jpeg',
+      img: '/lokwan (2).png',
       Weight: "5kg",
       MRP: 500,
       price: 360,
@@ -29,7 +33,7 @@ function App() {
     },
     {
       name: 'Sharbati Wheat Flour',
-      img: '/Aata.jpeg',
+      img: '/SARBATI.jpeg',
       Weight: "5kg",
       MRP: 600,
       price: 400,
@@ -60,12 +64,12 @@ function App() {
 
   const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
   const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
-
+ 
   const isHomePage = location.pathname === '/';
   const nextButton = isHomePage ? (
-    <div style={{ textAlign: 'left', marginTop: '100px' }}>
+    <div style={{ textAlign: 'center', marginTop: '80px' }}>
       <Button as={Link} to="/ourproducts" variant="success" style={{ color: 'black' }}>
-       BUY NOW Here
+       BUY NOW 
       </Button>
     </div>
   ) : null;
@@ -73,38 +77,44 @@ function App() {
   return (
     <>
      <div className={`App ${isHomePage ? 'home-page' : ''}`}>
-  <div className="app-container mt-5" >
+  <div className="app-container text-center mt-5" >
     
       <Navbar totalQuantity={totalQuantity}  />
-      <div className="container mt-5">
-
-
-</div>
+      <Container className=" mt-5">
+</Container>
       <Routes>
         <Route
           path="/"
           element={
             <>
+             <Container className="mt-5">
+              <Container className="mt-5"> <Row> <ImageSlider /></Row></Container>
+            
               <Container className="mt-5">
-                <h1><b>Now, Fresh Chakki Aata </b></h1><h3>Deliver to your home </h3>
-                <h3>Healthy facts of whole wheat fresh chakki aata:</h3>
-            <p>
-        Outer layer and core of wheat are very important parts of the grain as far as nutrients are concerned. They play a
-        vital role in digestion and contain vitamin B, anti-oxidants, zinc, copper and other essential nutrients. In regular
-        whole wheat flour made through post-processing of wheat, these things are compromised. That's why fresh chakki aata is
-        the best alternative to the mass-produced batches of regular whole wheat aata. We, at Ghar se ghar tak, make sure to
-        pick the best quality of fresh wheat which is then properly cleaned and dried before it is ground to make fresh chakki
-        aata. The fresh chakki aata is then packed lovingly in sustainable packaging and delivered to your homes, truly Ghar
-        se ghar tak.
-      </p>
-              </Container>
-              <Container className="mt-25">
               {nextButton}
+               </Container>
+                </Container>
+              <Container className="mt-5">
+                <h1><b>Hey! Bengaluru</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home </h3>
+                <h3> Why Ghar se Ghar Tak fresh chakki aata</h3>
+                <div className="d-flex justify-content-center">
+                <ul className="list-unstyled list-square">
+                <li>Finest quality wheat are selected from fields of Madhya Pradesh (Lokwan and Sharbati).</li>
+                 <li> Cleaned and dried in village homes making it hand and village crafted.</li>
+               <li> Grounded in Namma Bengaluru to serve you fresh.</li>
+               <li> More digestive fiber</li>
+               <li>No preservatives</li>
+               <li> Delicious and Healthy</li>
+            </ul>
+         </div>
               </Container>
+            
+             
               
             </>
           }
         />
+        
          <Route
           path="/ourproducts"
           element={<ProductLayout products={products} addToCart={addToCart} cart={cart} totalQuantity={totalQuantity} />}
@@ -115,11 +125,17 @@ function App() {
          <Route path="/about" element={<AboutUS />}/>
          <Route path="/team-member" element={<TeamMember />}/>
          <Route path="/contact-us" element={<ContactUs />}/>
-      
+         
       </Routes>
       </div>
       </div>
-      
+      <container>
+        <Row>
+
+        </Row>
+      </container>
+
+      <Footer/>
      </>
   );
 }

@@ -1,32 +1,43 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 
 function ContactUs() {
   return (
-    <section id="contact-us" className="bg-light py-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <h2>Contact Us</h2>
-            <p>
+    <>
+    <div>
+      <Row></Row>
+    </div>
+     <div className="mt-5 product-contain"> <Container  style={{ width: '300px', height: '100px',display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><h2>Contact Us</h2></Container></div>
+     <div>
+      <Row></Row>
+    </div>
+    <Container className="mt-3">
+    <p>
               If you have any questions or need assistance, feel free to get in touch with us. We're here to help!
-            </p>
+
+    </p>
             <ul className="list-unstyled">
               <li>
-                <strong>Phone:</strong> +1 (123) 456-7890
+                <strong>Phone:</strong> +91 8959242024   
               </li>
               <li>
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> Mail.grameencraft@gmail.com
               </li>
               <li>
-                <strong>Address:</strong> 1234 Main St, City, Country
+                <strong>Address:</strong> <h10>Bamanpuri village , Barawaha </h10>
+              <li> 
+                <h10> Khargoan</h10> Madhya Pradesh, India - Pin Code: 451115 
+              </li>
+                
               </li>
             </ul>
-          </div>
-          
-        </div>
-      </div>
-    </section>
+
+     
+  </Container>
+  </>
   );
 }
-
+    
+      
 export default ContactUs;

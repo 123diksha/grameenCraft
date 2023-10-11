@@ -1,0 +1,118 @@
+/* Base styles for the footer */
+
+.footerStyl {
+    background-color:#198754;
+    min-height: 25em;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10vh;
+}
+
+/* Footer logo image */
+
+.FLimg {
+    width: 45vh;
+    height: auto;
+    margin-top: 3vh;
+    border-radius: 1em;
+}
+
+/* Contact items */
+
+.contactItem {
+    margin-top: 6vh;
+}
+
+/* Quick links */
+
+.QuickLinks {
+    margin-top: 6vh;
+    text-align: left;
+}
+
+.QuickLinks a {
+    color: azure;
+    text-decoration: none;
+    margin-left: 0rem;
+}
+
+/* Our services section */
+
+.Ourservices {
+    margin-top: 6vh;
+}
+
+/* Content section */
+
+.contentStyl {
+    background-color: #FFFF;
+    display: flex;
+    justify-content: center;
+    padding: 10vh;
+}
+
+.Webname {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #f5f5dc63;
+    border-radius: 2em;
+    height: 10vh;
+    margin-top: 4vh;
+}
+
+.Webname h3 {
+    font-size: 1.5em;
+    margin-top: 3vh;
+    color: #FFFF;
+}
+
+/* Media queries for responsiveness */
+
+/* For screens with a maximum width of 768px (e.g., tablets) */
+
+@media screen and (max-width: 768px) {
+    .footerStyl {
+        flex-direction: column;
+        /* Adjusted flex direction for better stacking on smaller screens */
+        align-items: center;
+        /* Center the content horizontally */
+    }
+    .FLimg {
+        width: 100%;
+        /* Adjusted width to fit smaller screens */
+        height: auto;
+        margin-top: 3vh;
+        /* Reduced top margin for smaller screens */
+    }
+    .contactItem,
+    .QuickLinks,
+    .Ourservices {
+        margin-top: 4vh;
+        /* Reduced top margin for smaller screens */
+    }
+}
+
+/* For screens with a maximum width of 480px (e.g., smartphones) */
+
+@media screen and (max-width: 480px) {
+    .FLimg {
+        width: 100%;
+        /* Adjusted width to fit smaller screens */
+        height: auto;
+        margin-top: 2vh;
+        /* Reduced top margin for smaller screens */
+    }
+    .contactItem,
+    .QuickLinks{
+        margin-top: 2vh;
+        /* Reduced top margin for smaller screens */
+    }
+    .Ourservices {
+        margin-top: 2vh;
+        /* Reduced top margin for smaller screens */
+    }
+}

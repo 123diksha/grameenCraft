@@ -3,8 +3,14 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function MissionVision() {
   return (
+    <>
+    <div>
+      <Row></Row>
+    </div>
+    <div className="mt-5 product-contain ">
+       <Container  style={{ width: '300px', height: '100px',display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><h2>Mission and Vision</h2></Container></div>
     <Container>
-      <Row className="mt-4">
+      <Row className="mt-5">
         <Col>
           <Card>
             <Card.Body>
@@ -30,6 +36,7 @@ function MissionVision() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 
