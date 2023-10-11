@@ -1,8 +1,7 @@
-// ECommerceForm.js
 import React, { useState } from 'react';
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button, Row, Alert } from 'react-bootstrap';
 
-function ECommerceForm({ totalAmount ,name}) {
+function ECommerceForm({ totalAmount, productName }) {
   const [formData, setFormData] = useState({
     username: '',
     phoneNumber: '',
@@ -12,6 +11,10 @@ function ECommerceForm({ totalAmount ,name}) {
     latitude: null,
     longitude: null,
   });
+
+  const [error, setError] = useState('');
+
+  const validBangalorePins = ['560001', '560002', '560003', '560004', '560005']; // Replace with valid PIN codes
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,25 +38,31 @@ function ECommerceForm({ totalAmount ,name}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!validBangalorePins.includes(formData.pinCode)) {
+      setError('Sorry, we currently deliver only to Bangalore. Please enter a Bangalore PIN code.');
+    } else {
+      setError('!! Thanks for visiting us !!');
+      // Construct your WhatsApp message with the form data
+      const message = `
+        message: "Pay on URL - diksha.muchhala6@okhdfcbank"
+        Username: ${formData.username}
+        Phone Number: ${formData.phoneNumber}
+        City: ${formData.city}
+        Pin Code: ${formData.pinCode}
+        Address: ${formData.address}
+        Latitude: ${formData.latitude}
+        Longitude: ${formData.longitude}
+        Total Amount: ₹${totalAmount}
+        name: ${productName}
+      `;
 
-    // Construct your WhatsApp message with the form data
-    const message = `
-      Username: ${formData.username}
-      Phone Number: ${formData.phoneNumber}
-      City: ${formData.city}
-      Pin Code: ${formData.pinCode}
-      Address: ${formData.address}
-      Latitude: ${formData.latitude}
-      Longitude: ${formData.longitude}
-      Total Amount:  ₹${totalAmount}
-      name:${name}
-    `;
+      // Encode the message for the WhatsApp URL
+      const encodedMessage = encodeURIComponent(message);
 
-    // Encode the message for the WhatsApp URL
-    const encodedMessage = encodeURIComponent(message);
-
-    // Open WhatsApp with the message to a specific number (replace with your number)
-    window.open(`https://wa.me/918959242024/?text=${encodedMessage}`, '_blank');
+      // Open WhatsApp with the message to a specific number (replace with your number)
+      window.open(`https://wa.me/918959242024/?text=${encodedMessage}`, '_blank');
+    }
   };
 
   return (
@@ -113,12 +122,12 @@ function ECommerceForm({ totalAmount ,name}) {
         Get Current Location
       </Button>
       <Button variant="success" type="submit">
-        Send Details via WhatsApp
+        Place Order
       </Button>
+      {error && <Alert variant="danger">{error}</Alert>}
       <div>
         <Row>
-          <p><b>!! Thanks to visit us !!</b></p>
-        
+          <p><b>Pay on URL - diksha.muchhala6@okhdfcbank</b></p>
         </Row>
       </div>
     </Form>

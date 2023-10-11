@@ -19,7 +19,7 @@ function ContactUs() {
     </p>
             <ul className="list-unstyled">
               <li>
-                <strong>Phone:</strong> +91 8959242024
+                <strong>Phone:</strong> +91 8959242024   
               </li>
               <li>
                 <strong>Email:</strong> Mail.grameencraft@gmail.com

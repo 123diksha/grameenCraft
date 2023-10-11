@@ -30,13 +30,13 @@
 
 .QuickLinks {
     margin-top: 6vh;
-    text-align: center;
+    text-align: left;
 }
 
 .QuickLinks a {
     color: azure;
-    font-style: italic;
     text-decoration: none;
+    margin-left: 0rem;
 }
 
 /* Our services section */
