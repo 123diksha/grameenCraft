@@ -120,7 +120,9 @@ function App() {
           element={<ProductLayout products={products} addToCart={addToCart} cart={cart} totalQuantity={totalQuantity} />}
         />
         <Route path="/cart" element={<ShoppingCart cart={cart} clearCart={clearCart} />} />
-       <Route path="/form" element={<ECommerceForm totalAmount={totalAmount} selectedProductNames={cart.map(product => `${product.name} (${product.quantity} quantity)`)} style={{ marginTop: '20px' }} />}  />
+       <Route path="/form" element={<ECommerceForm totalAmount={totalAmount}  selectedProductNames={cart
+      .filter(product => product.quantity > 0)
+      .map(product => `${product.name} (${product.quantity} quantity)`)} style={{ marginTop: '20px' }} />}  />
         <Route path="/mission-vision" element={<MissionVision />} />
          <Route path="/about" element={<AboutUS />}/>
          <Route path="/team-member" element={<TeamMember />}/>
