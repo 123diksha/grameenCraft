@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Alert } from 'react-bootstrap';
+import { Form, Button, Row, Alert, Container } from 'react-bootstrap';
 
-function ECommerceForm({ totalAmount, productName }) {
+function ECommerceForm({ totalAmount, selectedProductNames}) {
   const [formData, setFormData] = useState({
     username: '',
     phoneNumber: '',
@@ -54,7 +54,7 @@ function ECommerceForm({ totalAmount, productName }) {
         Latitude: ${formData.latitude}
         Longitude: ${formData.longitude}
         Total Amount: ₹${totalAmount}
-        name: ${productName}
+        name: ${selectedProductNames.join(', ')}
       `;
 
       // Encode the message for the WhatsApp URL
@@ -66,7 +66,8 @@ function ECommerceForm({ totalAmount, productName }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Container mt-5>
+    <Form style={{ width: '60%', margin: '0 auto' }} onSubmit={handleSubmit}>
       <Form.Group controlId="username">
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -131,6 +132,7 @@ function ECommerceForm({ totalAmount, productName }) {
         </Row>
       </div>
     </Form>
+    </Container>
   );
 }
 
