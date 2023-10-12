@@ -116,3 +116,13 @@
         /* Reduced top margin for smaller screens */
     }
 }
+
+@media (max-width: 600px) {
+    .footerStyl {
+        padding: 24px;
+
+        .row {
+            flex-direction: column !important;
+        }
+    }
+}
