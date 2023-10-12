@@ -45,10 +45,10 @@ const totalAmount = cart.reduce((total, product) => total + product.price * prod
               <p style={{ fontSize: '18px', fontWeight: 'bold' }}>Total Amount: ₹{totalAmount.toFixed(2)}</p>
               <div className="text-center mt-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Link to="/form">
-  <Button className="btn btn-success">
-    Buy Now
-  </Button>
-</Link>
+              <Button className="btn btn-success">
+                  Buy Now
+                </Button>
+                </Link>
 
                 <Button variant="danger" onClick={clearCart}>
                   Clear Cart
