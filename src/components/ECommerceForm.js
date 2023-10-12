@@ -83,7 +83,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
         Latitude: ${formData.latitude}
         Longitude: ${formData.longitude}
         Total Amount: ₹${totalAmount}
-        name: ${selectedProductNames.join(', ')}
+        Name: ${selectedProductNames.join(', ')}
       `;
 
       // Encode the message for the WhatsApp URL
