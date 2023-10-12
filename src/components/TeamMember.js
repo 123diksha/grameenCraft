@@ -20,7 +20,7 @@ function TeamMember() {
       <Row className="mt-5">
         <Col className="d-flex justify-content-center align-items-center">
           <div style={circleStyle}>
-            <Image src='./public/pphoto_with_chakki.jpg' alt="Mission Vision" style={imageStyle} />
+            <Image src='/photo_with_chakki.jpg' alt="Mission Vision" style={imageStyle} />
           </div>
         </Col>
       </Row>

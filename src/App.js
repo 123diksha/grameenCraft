@@ -95,16 +95,16 @@ function App() {
                </Container>
                 </Container>
               <Container className="mt-5">
-                <h1><b>Hey! Bengaluru</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home </h3>
-                <h3> Why Ghar se Ghar Tak fresh chakki aata</h3>
+                <h1><b>Hey Bengaluru!</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home.</h3>
+                <h3> Why Ghar se Ghar Tak fresh chakki aata?</h3>
                 <div className="d-flex justify-content-center">
                 <ul className="list-unstyled list-square">
-                <li>Finest quality wheat are selected from fields of Madhya Pradesh (Lokwan and Sharbati).</li>
+                <li>Finest quality wheat  (Lokwan and Sharbati) are selected from fields of Madhya Pradesh.</li>
                  <li> Cleaned and dried in village homes making it hand and village crafted.</li>
-               <li> Grounded in Namma Bengaluru to serve you fresh.</li>
+               <li> Ground in Namma Bengaluru to serve you fresh.</li>
                <li> More digestive fiber</li>
                <li>No preservatives</li>
-               <li> Delicious and Healthy</li>
+               <li>Delicious and Healthy</li>
             </ul>
          </div>
               </Container>
@@ -120,7 +120,9 @@ function App() {
           element={<ProductLayout products={products} addToCart={addToCart} cart={cart} totalQuantity={totalQuantity} />}
         />
         <Route path="/cart" element={<ShoppingCart cart={cart} clearCart={clearCart} />} />
-        <Route path="/form" element={<ECommerceForm totalAmount={totalAmount} />} />
+       <Route path="/form" element={<ECommerceForm totalAmount={totalAmount}  selectedProductNames={cart
+      .filter(product => product.quantity > 0)
+      .map(product => `${product.name} (${product.quantity} quantity)`)} style={{ marginTop: '20px' }} />}  />
         <Route path="/mission-vision" element={<MissionVision />} />
          <Route path="/about" element={<AboutUS />}/>
          <Route path="/team-member" element={<TeamMember />}/>

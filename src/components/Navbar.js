@@ -9,29 +9,40 @@ import './Navbar.css';
 export default class Navbar extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      isOffcanvasOpen: false, // Initially, offcanvas is closed
-    };
+    this.state = {};
   }
 
-  handleOffcanvasToggle = () => {
-    this.setState((prevState) => ({
-      isOffcanvasOpen: !prevState.isOffcanvasOpen,
-    }));
-  };
+  navItems = [{
+    displayName: '',
 
-  handleNavItemClick = () => {
-    // Close the offcanvas when a navigation item is clicked
-    this.setState({ isOffcanvasOpen: false });
-  };
+  }];
 
   render() {
     const { totalQuantity } = this.props;
-    const { isOffcanvasOpen } = this.state;
+    const navItems = [{
+      displayName: 'Home',
+      redirectTo: '/',
+    }, {
+      displayName: 'Products',
+      redirectTo: '/ourproducts',
+    }, {
+      displayName: 'About Us',
+      redirectTo: '/about',
+    }, {
+      displayName: 'Mission & Vision',
+      redirectTo: '/mission-vision',
+    }, {
+      displayName: 'Our Story',
+      redirectTo: '/team-member',
+    }, {
+      displayName: 'Contact Us',
+      redirectTo: '/contact-us',
+    }];
+
 
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top mb-3 pt-0">
           <div className="container-fluid">
             <button
               className="navbar-toggler"
@@ -45,7 +56,8 @@ export default class Navbar extends PureComponent {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div
-              className={`offcanvas offcanvas-start ${isOffcanvasOpen ? 'show' : ''}`}
+              className={`offcanvas offcanvas-start`}
+              style={{width: '60%'}}
               tabIndex="-1"
               id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel"
@@ -68,7 +80,13 @@ export default class Navbar extends PureComponent {
                   <img src={logo} alt="Logo" style={{ height: '30px', width: '100px' }} />
                 </a>
                 <ul className="navbar-nav justify-content-start flex-grow-1 ps-3">
-                  <li className="nav-item">
+                  {navItems.map((item, index) => <li data-bs-dismiss="offcanvas" className="nav-item">
+                    <NavLink to={item.redirectTo} className="nav-link" exact >
+                      <b>{item.displayName}</b>
+
+                    </NavLink>
+                  </li>)}
+                  {/* <li className="nav-item">
                     <NavLink to="/" className="nav-link" onClick={this.handleNavItemClick}>
                       <b>HOME</b>
                     </NavLink>
@@ -92,7 +110,7 @@ export default class Navbar extends PureComponent {
                     <NavLink to="/contact-us" className="nav-link" onClick={this.handleNavItemClick}>
                       <b>CONTACT US</b>
                     </NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 
-import ECommerceForm from './ECommerceForm';
 
 function ShoppingCart({ cart, addToCart, clearCart }) {
-  const [showForm, setShowForm] = useState(false);
+ 
 
   // Calculate the initial total quantity based on the items in the cart
   const initialTotalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
@@ -19,7 +18,7 @@ function ShoppingCart({ cart, addToCart, clearCart }) {
 
   
 const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
-const name = cart.reduce((total, product) => total + product.name, '');
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Card style={{ width: '80%', maxWidth: '600px', border: 'none', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)' }}>
@@ -43,11 +42,15 @@ const name = cart.reduce((total, product) => total + product.name, '');
                 ))}
               </ul>
               <p style={{ fontSize: '18px', fontWeight: 'bold' }}>Total Quantity: {totalQuantity}</p>
+              <p style={{ fontSize: '18px', fontWeight: 'bold' }}>Delivery Charges: 0</p>
               <p style={{ fontSize: '18px', fontWeight: 'bold' }}>Total Amount: ₹{totalAmount.toFixed(2)}</p>
               <div className="text-center mt-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button className="btn btn-success" onClick={() => setShowForm(!showForm)}>
+              <Link to="/form">
+              <Button className="btn btn-success">
                   Buy Now
                 </Button>
+                </Link>
+
                 <Button variant="danger" onClick={clearCart}>
                   Clear Cart
                 </Button>
@@ -65,7 +68,6 @@ const name = cart.reduce((total, product) => total + product.name, '');
           )}
         </Card.Body>
       </Card>
-{showForm && <ECommerceForm totalAmount={totalAmount} selectedProductNames={cart.map(product => product.name)} style={{ marginTop: '20px' }}/>}
 
     </div>
   );
