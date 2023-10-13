@@ -71,10 +71,10 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
     if (!validBangalorePins.includes(formData.pinCode)) {
       setError('Sorry, we currently deliver only to Bangalore. Please enter a Bangalore PIN code.');
     } else {
-      setError('!! Thanks for visiting us !!');
+      setError('!! Thanks for visiting us !!'); 
       // Construct your WhatsApp message with the form data
       const message = `
-        Message from GrammenCraft's: "Pay on URL - diksha.muchhala6@okhdfcbank"
+        Message from GrammenCraft's: "Pay on URL - dikshamuchhala6@okhdfcbank"
         Username: ${formData.username}
         Phone Number: ${formData.phoneNumber}
         City: ${formData.city}
@@ -157,7 +157,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
       {error && <Alert variant="danger">{error}</Alert>}
       <div>
         <Row>
-          <p><b>Pay on URL - diksha.muchhala6@okhdfcbank</b></p>
+          <p><b>Payment Mode - COD dikshamuchhala6@okhdfcbank<br></br>/8959242024</b></p>
         </Row>
       </div>
     </Form>
