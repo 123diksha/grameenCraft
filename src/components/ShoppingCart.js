@@ -58,7 +58,7 @@ const totalAmount = cart.reduce((total, product) => total + product.price * prod
             </div>
           ) : (
             <div>
-              <p>Your cart is empty.Please click on below button to buy ur products.</p>
+              <p>Your cart is empty.Please click on below button to buy our products.</p>
               <Link to="/ourproducts">
                 <Button variant="success">
                   Buy Now
