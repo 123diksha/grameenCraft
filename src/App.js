@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { useLocation, Routes, Route, Link } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart';
@@ -15,12 +15,16 @@ import ImageSlider from './components/ImageSlider';
 import { Row } from 'react-bootstrap';
 
 function App() {
- 
+
   const location = useLocation();
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const products = [
     {
@@ -64,72 +68,69 @@ function App() {
 
   const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
   const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
- 
+
   const isHomePage = location.pathname === '/';
   const nextButton = isHomePage ? (
     <div style={{ textAlign: 'center', marginTop: '80px' }}>
       <Button as={Link} to="/ourproducts" variant="success" style={{ color: 'black' }}>
-       BUY NOW 
+        BUY NOW
       </Button>
     </div>
   ) : null;
 
   return (
     <>
-     <div className={`App ${isHomePage ? 'home-page' : ''}`}>
-  <div className="app-container text-center mt-5" >
-    
-      <Navbar totalQuantity={totalQuantity}  />
-      <Container className=" mt-5">
-</Container>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-             <Container className="mt-5">
-              <Container className="mt-5"> <Row> <ImageSlider /></Row></Container>
-            
-              <Container className="mt-5">
-              {nextButton}
-               </Container>
-                </Container>
-              <Container className="mt-5">
-                <h1><b>Hey Bengaluru!</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home.</h3>
-                <h3> Why Ghar se Ghar Tak fresh chakki aata?</h3>
-                <div className="d-flex justify-content-center">
-                <ul className="list-unstyled list-square">
-                <li>Finest quality wheat  (Lokwan and Sharbati) are selected from fields of Madhya Pradesh.</li>
-                 <li> Cleaned and dried in village homes making it hand and village crafted.</li>
-               <li> Ground in Namma Bengaluru to serve you fresh.</li>
-               <li> More digestive fiber</li>
-               <li>No preservatives</li>
-               <li>Delicious and Healthy</li>
-            </ul>
-         </div>
-              </Container>
-            
-             
-              
-            </>
-          }
-        />
-        
-         <Route
-          path="/ourproducts"
-          element={<ProductLayout products={products} addToCart={addToCart} cart={cart} totalQuantity={totalQuantity} />}
-        />
-        <Route path="/cart" element={<ShoppingCart cart={cart} clearCart={clearCart} />} />
-       <Route path="/form" element={<ECommerceForm totalAmount={totalAmount}  selectedProductNames={cart
-      .filter(product => product.quantity > 0)
-      .map(product => `${product.name} (${product.quantity} quantity)`)} style={{ marginTop: '20px' }} />}  />
-        <Route path="/mission-vision" element={<MissionVision />} />
-         <Route path="/about" element={<AboutUS />}/>
-         <Route path="/team-member" element={<TeamMember />}/>
-         <Route path="/contact-us" element={<ContactUs />}/>
-         
-      </Routes>
-      </div>
+      <div className={`App ${isHomePage ? 'home-page' : ''}`}>
+        <div className="app-container text-center mt-5" >
+
+          <Navbar totalQuantity={totalQuantity} />
+          <Container className=" mt-5">
+          </Container>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Container className="mt-5">
+                    <Container className="mt-5"> <Row> <ImageSlider /></Row></Container>
+
+                    <Container className="mt-5">
+                      {nextButton}
+                    </Container>
+                  </Container>
+                  <Container className="mt-5">
+                    <h1><b>Hey Bengaluru!</b></h1> <h3> Now, Fresh Chakki Aata Delivered to your home.</h3>
+                    <h3> Why Ghar se Ghar Tak fresh chakki aata?</h3>
+                    <div className="d-flex justify-content-center">
+                      <ul className="list-unstyled list-square">
+                        <li>Finest quality wheat  (Lokwan and Sharbati) are selected from fields of Madhya Pradesh.</li>
+                        <li> Cleaned and dried in village homes making it hand and village crafted.</li>
+                        <li> Ground in Namma Bengaluru to serve you fresh.</li>
+                        <li> More digestive fiber</li>
+                        <li>No preservatives</li>
+                        <li>Delicious and Healthy</li>
+                      </ul>
+                    </div>
+                  </Container>
+                </>
+              }
+            />
+
+            <Route
+              path="/ourproducts"
+              element={<ProductLayout products={products} addToCart={addToCart} cart={cart} totalQuantity={totalQuantity} />}
+            />
+            <Route path="/cart" element={<ShoppingCart cart={cart} clearCart={clearCart} />} />
+            <Route path="/form" element={<ECommerceForm totalAmount={totalAmount} selectedProductNames={cart
+              .filter(product => product.quantity > 0)
+              .map(product => `${product.name} (${product.quantity} quantity)`)} style={{ marginTop: '20px' }} />} />
+            <Route path="/mission-vision" element={<MissionVision />} />
+            <Route path="/about" element={<AboutUS />} />
+            <Route path="/team-member" element={<TeamMember />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+
+          </Routes>
+        </div>
       </div>
       <container>
         <Row>
@@ -137,8 +138,8 @@ function App() {
         </Row>
       </container>
 
-      <Footer/>
-     </>
+      <Footer />
+    </>
   );
 }
 

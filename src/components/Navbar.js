@@ -81,36 +81,10 @@ export default class Navbar extends PureComponent {
                 </a>
                 <ul className="navbar-nav justify-content-start flex-grow-1 ps-3">
                   {navItems.map((item, index) => <li data-bs-dismiss="offcanvas" className="nav-item">
-                    <NavLink to={item.redirectTo} className="nav-link" exact >
+                    <NavLink to={item.redirectTo} className="nav-link" exact>
                       <b>{item.displayName}</b>
-
                     </NavLink>
                   </li>)}
-                  {/* <li className="nav-item">
-                    <NavLink to="/" className="nav-link" onClick={this.handleNavItemClick}>
-                      <b>HOME</b>
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/ourproducts" className="nav-link" onClick={this.handleNavItemClick}>
-                      <b>PRODUCTS</b>
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/about" className="nav-link" onClick={this.handleNavItemClick}>
-                      <b>ABOUT US</b>
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/mission-vision" className="nav-link" onClick={this.handleNavItemClick}>
-                      <b>MISSION & VISION</b>
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/contact-us" className="nav-link" onClick={this.handleNavItemClick}>
-                      <b>CONTACT US</b>
-                    </NavLink>
-                  </li> */}
                 </ul>
               </div>
             </div>
