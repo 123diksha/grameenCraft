@@ -44,7 +44,8 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
     "560009", "560061", "560003", "562157", "562130", "560029", "560049", "562106", "560041", "560006", "560028",
     "560056", "562106", "560087", "560052", "560003", "560045", "560001", "562157", "560097", "560040", "560040",
     "560078", "560017", "560049", "560004", "560091", "560018", "560047", "560003", "560064", "560066", "560027",
-    "562107", "560070", "560078", "560064", "560064", "560037", "560022", "560022"
+    "562107", "560070", "560078", "560064", "560064", "560037", "560022", "560022","635109","635103","635119","635118",
+    "635110","635108","635105","635204","635002","635003","635109","635126","635126","635126","635109","635109","635109","635109","635103","562107","635109","635109","635109","635109","635126","635109","635109","635109","635109","635109","635109","635109","635126","635126","635109","635109","635109","635109","635854","600082","635109","635110","587116","635109","635109","635110","635126","635126","635126","635110","635109","562107","635109","635109","635114","635109","635109","635109","635109","635126","635109","635109","635126","635126","635126","635109","635109","641669","635109","620018","635109","635109","635126"
   ];
    // Replace with valid PIN codes
 
@@ -73,7 +74,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
     e.preventDefault();
     
     if (!validBangalorePins.includes(formData.pinCode)) {
-      setError('Sorry, we currently deliver only to Bangalore. Please enter a Bangalore PIN code.');
+      setError('Sorry, we currently deliver only to Bangalore. Please enter a Bangalore PIN code.If you have any query you can contact on number 8959242024');
     } else {
       setError('!! Thanks for visiting us !!'); 
       // Construct your WhatsApp message with the form data
@@ -95,7 +96,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
       const encodedMessage = encodeURIComponent(message);
 
       // Open WhatsApp with the message to a specific number (replace with your number)
-      window.open(`https://wa.me/918959242024/?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/918088388973/?text=${encodedMessage}`, '_blank');
     }
   };
 
