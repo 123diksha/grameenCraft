@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Form, Button, Row, Alert, Container } from 'react-bootstrap';
 
 function ECommerceForm({ totalAmount, selectedProductNames}) {
@@ -8,11 +9,13 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
     city: '',
     pinCode: '',
     address: '',
+    area: null,
     latitude: null,
     longitude: null,
   });
 
   const [error, setError] = useState('');
+  const [areaList, setAreaList] = useState([]);
 
  const validBangalorePins = [
     "560063", "560030", "560034", "560007", "560007", "560092", "560024", "562106", "562106", "560045", "560003",
@@ -66,6 +69,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
   };
 
   const handleSubmit = (e) => {
+    console.log(formData);
     e.preventDefault();
     
     if (!validBangalorePins.includes(formData.pinCode)) {
@@ -80,6 +84,7 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
         City: ${formData.city}
         Pin Code: ${formData.pinCode}
         Address: ${formData.address}
+        Area: ${formData.area}
         Latitude: ${formData.latitude}
         Longitude: ${formData.longitude}
         Total Amount: ₹${totalAmount}
@@ -94,6 +99,17 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
     }
   };
 
+  const getAreaByPinCode = (event) => {
+    axios.get(`https://api.postalpincode.in/pincode/${event.target.value}`).then((response) => {
+      setAreaList(response.data ? response.data[0].PostOffice : []);
+      setFormData({
+        ...formData,
+        area: areaList && areaList.length > 0 ? areaList[0].Name : '',
+        city: response.data && response.data[0].PostOffice && response.data[0].PostOffice.length > 0 ? response.data[0].PostOffice[0].District : ''
+      })
+    })
+  }
+
   return (
     <Container mt-5>
     <Form style={{ width: '60%', margin: '0 auto' }} onSubmit={handleSubmit}>
@@ -104,6 +120,17 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
           name="username"
           value={formData.username}
           onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
+      <Form.Group controlId="pinCode">
+        <Form.Label>Pin Code</Form.Label>
+        <Form.Control
+          type="number"
+          name="pinCode"
+          value={formData.pinCode}
+          onChange={handleInputChange}
+          onBlur={getAreaByPinCode}
           required
         />
       </Form.Group>
@@ -123,19 +150,22 @@ function ECommerceForm({ totalAmount, selectedProductNames}) {
           type="text"
           name="city"
           value={formData.city}
+          disabled
           onChange={handleInputChange}
           required
         />
       </Form.Group>
-      <Form.Group controlId="pinCode">
-        <Form.Label>Pin Code</Form.Label>
-        <Form.Control
+      <Form.Group controlId="area">
+        <Form.Label>Area</Form.Label>
+        <Form.Select
           type="text"
-          name="pinCode"
-          value={formData.pinCode}
+          name="area"
+          value={formData.area}
           onChange={handleInputChange}
           required
-        />
+        >
+          {areaList && areaList.map((area, index) =>  <option value={area.name} key={index}>{area.Name}</option>)}
+        </Form.Select>
       </Form.Group>
       <Form.Group controlId="address">
         <Form.Label>Address</Form.Label>
